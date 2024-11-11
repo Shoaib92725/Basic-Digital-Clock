@@ -15,7 +15,7 @@ const tick = () => {
     hour = hour - 12;
   }
 
-  // Add leading zeros if needed (for single digit hours, minutes, and seconds)
+  // Add leading zeros if needed 
   hour = hour < 10 ? `0${hour}` : hour;
   min = min < 10 ? `0${min}` : min;
   sec = sec < 10 ? `0${sec}` : sec;
@@ -26,10 +26,18 @@ const tick = () => {
 
   clock.innerHTML = html;
 };
-
+let i = 0;  
 button.addEventListener("click", (e) => {
   e.preventDefault();
-  convert12Hour = !convert12Hour; // Toggle between 24-hour and 12-hour format
+  i++;
+  if(i%2==0){  
+    button.innerHTML= ` <i class="fa fa-exchange" aria-hidden="true"></i>  24-Hour Format`;
+    convert12Hour = !convert12Hour; // Toggle between 24-hour and 12-hour format
+  }
+  else{
+    button.innerHTML= ` <i class="fa fa-exchange" aria-hidden="true"></i>  12-Hour Format`;
+    convert12Hour = !convert12Hour; // Toggle between 24-hour and 12-hour format
+  }
 });
 
 setInterval(tick, 1000);
